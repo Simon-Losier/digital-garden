@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:55775/bedrock-addons/score_ui/</loc>
+    <lastmod>2024-04-23T07:06:54-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:55775/</loc>
+    <lastmod>2024-04-23T07:06:54-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:55775/bedrock-addons/custom-events/</loc>
+    <lastmod>2024-04-22T22:43:21-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:55775/bedrock-addons/</loc>
+    <lastmod>2024-04-22T22:40:51-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:55775/hello/</loc>
+    <lastmod>2024-04-22T22:21:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:55775/categories/</loc>
+  </url><url>
+    <loc>http://localhost:55775/tags/</loc>
+  </url>
+</urlset>

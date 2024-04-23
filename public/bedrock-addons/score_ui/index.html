@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=55775&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="generator" content="Hugo 0.124.1">
+
+    
+
+    
+
+    
+        
+            <meta
+                name="description"
+                content="Simon&#39;s Digital Garden" />
+        
+
+        
+            <meta
+                name="keywords"
+                content="minecraft, bedrock, minecraft addons, hugo, gamedev, webdev" />
+        
+
+        
+            <meta name="author" content="Simon" />
+        
+
+    
+
+
+    <title>
+        
+            Creating a score HUD with JSON UI |
+            Simon&#39;s Digital Garden
+        
+    </title>
+
+    
+
+
+    
+    
+
+    
+    
+
+
+    
+    
+
+
+    
+    
+
+
+    
+    
+
+    
+
+
+    
+    
+
+    
+
+    
+
+        
+            
+            <link
+                rel="stylesheet"
+                href="/reset.min_6851612176967065231.3662e40c85350bf0bcf308b7db81c173e4b690b862d3c3cde460de5155550bf055b7ff48cddb1cf5255e55f0355196d8dec1d49434b2457842cc77ebea198f3f.css"
+                integrity="sha512-NmLkDIU1C/C88wi324HBc&#43;S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" />
+        
+            
+            <link
+                rel="stylesheet"
+                href="/_theme/css/01_layout.26ffaaf7a32c233cbe1c7c9093d3b744e9466ea0a11559a8f3350a40468de72856a6fd3fd8f38bc13f66093fbeeee908d56483cac2ac01de75b17f999fd2606a.css"
+                integrity="sha512-Jv&#43;q96MsIzy&#43;HHyQk9O3ROlGbqChFVmo8zUKQEaN5yhWpv0/2POLwT9mCT&#43;&#43;7ukI1WSDysKsAd51sX&#43;Zn9Jgag==" />
+        
+            
+            <link
+                rel="stylesheet"
+                href="/_theme/css/02_style.6e547a963eb4b47b8466738206d9e1d164b1af63a268440672bd5138749f058278dbecc942f26f32c884fba203dc138d3dbdc0d3b559a049feec71464bb56ca1.css"
+                integrity="sha512-blR6lj60tHuEZnOCBtnh0WSxr2OiaEQGcr1ROHSfBYJ42&#43;zJQvJvMsiE&#43;6ID3BONPb3A07VZoEn&#43;7HFGS7VsoQ==" />
+        
+            
+            <link
+                rel="stylesheet"
+                href="/_theme/css/03_home.c12c2a68104bddb5523ceeaafb439534c4574cc4e78ffbab3a8e7d8c2bd3bd4eab28a89e9039fb588153dbf64108c4eafaee3c52d6192050f7ef5ec4ecc7c21f.css"
+                integrity="sha512-wSwqaBBL3bVSPO6q&#43;0OVNMRXTMTnj/urOo59jCvTvU6rKKiekDn7WIFT2/ZBCMTq&#43;u48UtYZIFD3717E7MfCHw==" />
+        
+            
+            <link
+                rel="stylesheet"
+                href="/_theme/css/04_responsive.cd3527afabdc02c3c117d57389f622b57e143ac3ee5dcc150b0e4b6ef262353217a1bf92f365e0f23f3021fd5e97abab71b1f06c2c431e885f46a27f5d9e9730.css"
+                integrity="sha512-zTUnr6vcAsPBF9VzifYitX4UOsPuXcwVCw5LbvJiNTIXob&#43;S82Xg8j8wIf1el6urcbHwbCxDHohfRqJ/XZ6XMA==" />
+        
+            
+            <link
+                rel="stylesheet"
+                href="/_theme/css/05_markdown.b84d310882bf53ceaa3e614e623874bb542bacb17445bb27c2deb29e6dc0525a4d9fa5c49532000df51ca1cb29d2697dcd4ec4ef2493bd86f5d820de17ebae21.css"
+                integrity="sha512-uE0xCIK/U86qPmFOYjh0u1QrrLF0Rbsnwt6ynm3AUlpNn6XElTIADfUcocsp0ml9zU7E7ySTvYb12CDeF&#43;uuIQ==" />
+        
+
+    
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+</head>
+
+
+
+    <body>
+        <header class="header">
+    <div class="header_left">
+        
+    </div>
+
+    <div class="header_middle">
+        
+            Creating a score HUD with JSON UI -
+            Simon&#39;s Digital Garden
+        
+    </div>
+</header>
+
+
+
+        <main>
+            <aside class="sidebar">
+    
+
+
+
+    
+    
+
+    
+    
+
+
+    <ul class="section-tree">
+        
+            
+                <li
+                    
+                        class="dir closed-dir"
+                    >
+                    <span class="dir-text"> Hugo </span>
+
+                    
+
+
+
+    
+    
+
+    
+    
+
+
+    <ul class="section-tree">
+        
+            
+                <li
+                    
+                        class="dir closed-dir"
+                    >
+                    <span class="dir-text"> Dotorg Theme </span>
+
+                    
+
+
+
+    
+    
+
+    
+    
+
+
+    <ul class="section-tree">
+        
+            
+                <li class="file">
+                    <a href="http://localhost:55775/hugo/dotorg/change-theme-colors/" title="./hugo/dotorg/change-theme-colors/">
+                        
+                            Change Dot Org Theme Colors
+                        
+                    </a>
+                </li>
+            
+        
+    </ul>
+
+
+                </li>
+            
+        
+    </ul>
+
+
+                </li>
+            
+        
+            
+                <li
+                    
+                        class="dir opened-dir"
+                    >
+                    <span class="dir-text"> Bedrock Addons </span>
+
+                    
+
+
+
+    
+    
+
+    
+    
+
+
+    <ul class="section-tree">
+        
+            
+                <li class="file">
+                    <a href="http://localhost:55775/bedrock-addons/score_ui/" title="./bedrock-addons/score_ui/">
+                        
+                            Creating a score HUD with JSON UI
+                        
+                    </a>
+                </li>
+            
+        
+            
+                <li class="file">
+                    <a href="http://localhost:55775/bedrock-addons/custom-events/" title="./bedrock-addons/custom-events/">
+                        
+                            Make an interactable block with custom components
+                        
+                    </a>
+                </li>
+            
+        
+    </ul>
+
+
+                </li>
+            
+        
+    </ul>
+
+
+</aside>
+<aside class="exapandable"></aside>
+
+
+            
+    <article class="main">
+        <button
+    class="sidebar-toggle-btn"
+    type="menu"
+    aria-expanded="false"
+    aria-haspopup="true">
+    <i class="bi bi-list"></i>
+</button>
+
+
+
+        <div class="title">
+            <h1 class="title-header">
+                Creating a score HUD with JSON UI
+            </h1>
+
+            <div class="author-date-readtime">
+                
+
+                    
+                        <div class="author" title="Author">
+                            <i class="bi bi-person"></i>
+                            <a
+                                href="/author/simon/"
+                                class="cat-btn">
+                                Simon
+                            </a>
+                        </div>
+                    
+
+                
+
+                
+                    <div class="date" title="Date">
+                        <i class="bi bi-calendar3"></i>
+                        <time
+                            datetime="2024.04.23"
+                            >2024.04.23
+                        </time>
+                    </div>
+                
+
+                
+                    <div
+                        class="readtime"
+                        title="Time to Read">
+                        <i class="bi bi-clock"></i>
+                        1 min to read
+                    </div>
+                
+            </div>
+        </div>
+
+        <div class="article-meta">
+            
+
+            
+
+            
+                <div class="breadcumb">
+                    <i class="bi bi-folder"></i>
+                    
+    
+    
+
+
+
+
+<a href="http://localhost:55775/" class="bread-btn">
+    
+        <i class="bi bi-house-fill"></i>
+    
+
+    
+        Home
+    
+</a>
+
+
+
+
+    /
+
+
+
+<a href="http://localhost:55775/bedrock-addons/" class="bread-btn">
+    
+
+    
+        Bedrock Addons
+    
+</a>
+
+
+
+
+    /
+
+
+
+<a href="http://localhost:55775/bedrock-addons/score_ui/" class="bread-btn">
+    
+
+    
+        
+            Creating a score HUD with JSON UI
+        
+
+    
+</a>
+
+                </div>
+            
+
+            
+        </div>
+
+        
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#step-1-create-score-ui-element">Step 1: Create Score UI Element</a></li>
+    <li><a href="#step-2-update-ui-element-programmatically">Step 2: Update UI element programmatically</a>
+      <ul>
+        <li><a href="#title-command">Title Command</a></li>
+        <li><a href="#sending-title-programmatically">Sending title programmatically</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        
+
+
+        <div class="content">
+            
+                <h2 id="step-1-create-score-ui-element">Step 1: Create Score UI Element</h2>
+<p>Create a hud object in the <code>RP/ui/hud_screen.json</code> file</p>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="#ZgotmplZ">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JSON" data-lang="JSON"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;namespace&#34;</span>: <span style="color:#e6db74">&#34;hud&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;hud_text&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;label&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;text&#34;</span>: <span style="color:#e6db74">&#34;#text&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;anchor_from&#34;</span>: <span style="color:#e6db74">&#34;top_left&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;anchor_to&#34;</span>: <span style="color:#e6db74">&#34;top_left&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;offset&#34;</span>: [ <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span> ],
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;$update_string&#34;</span>: <span style="color:#e6db74">&#34;update&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;controls&#34;</span>: [
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;data_control&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;panel&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;size&#34;</span>: [ <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span> ],
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;bindings&#34;</span>: [
+</span></span><span style="display:flex;"><span>                        {
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;binding_name&#34;</span>: <span style="color:#e6db74">&#34;#hud_title_text_string&#34;</span>      <span style="color:#75715e">// reads in the current title string
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        },
+</span></span><span style="display:flex;"><span>                        {
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;binding_name&#34;</span>: <span style="color:#e6db74">&#34;#hud_title_text_string&#34;</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;binding_name_override&#34;</span>: <span style="color:#e6db74">&#34;#preserved_text&#34;</span>,   <span style="color:#75715e">// updates #preserved_text when visibility of this element changes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                            <span style="color:#f92672">&#34;binding_condition&#34;</span>: <span style="color:#e6db74">&#34;visibility_changed&#34;</span>
+</span></span><span style="display:flex;"><span>                        },
+</span></span><span style="display:flex;"><span>                        <span style="color:#75715e">// element becomes visible then immediately turns invisible when a title containing the update string is passed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        {
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;binding_type&#34;</span>: <span style="color:#e6db74">&#34;view&#34;</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;source_property_name&#34;</span>: <span style="color:#e6db74">&#34;(not (#hud_title_text_string = #preserved_text) and not ((#hud_title_text_string - $update_string) = #hud_title_text_string))&#34;</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;target_property_name&#34;</span>: <span style="color:#e6db74">&#34;#visible&#34;</span>
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                    ]
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;bindings&#34;</span>: [
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;binding_type&#34;</span>: <span style="color:#e6db74">&#34;view&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;source_control_name&#34;</span>: <span style="color:#e6db74">&#34;data_control&#34;</span>,                          <span style="color:#75715e">// reads bindings from the &#34;data_control&#34; child element
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#f92672">&#34;source_property_name&#34;</span>: <span style="color:#e6db74">&#34;(#preserved_text - $update_string)&#34;</span>,   <span style="color:#75715e">// remove string update text from the text to be displayed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#f92672">&#34;target_property_name&#34;</span>: <span style="color:#e6db74">&#34;#text&#34;</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;root_panel&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;modifications&#34;</span>: [
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;array_name&#34;</span>: <span style="color:#e6db74">&#34;controls&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;operation&#34;</span>: <span style="color:#e6db74">&#34;insert_front&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;value&#34;</span>: [
+</span></span><span style="display:flex;"><span>                    { <span style="color:#f92672">&#34;hud_text@hud.hud_text&#34;</span>: {} }
+</span></span><span style="display:flex;"><span>                ]
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+    
+</div>
+<h2 id="step-2-update-ui-element-programmatically">Step 2: Update UI element programmatically</h2>
+<h3 id="title-command">Title Command</h3>
+<h4 id="making-title-invisible">Making title invisible:</h4>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="/title%20@s%20times%200%200%200">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <pre><code>/title @s times 0 0 0</code></pre>
+    
+</div>
+<h4 id="sending-the-title">Sending the title</h4>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="/title%20@s%20title%20updateScore:%207">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <pre><code>/title @s title updateScore: 7</code></pre>
+    
+</div>
+<h3 id="sending-title-programmatically">Sending title programmatically</h3>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="#ZgotmplZ">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#a6e22e">player</span>.<span style="color:#a6e22e">onScreenDisplay</span>.<span style="color:#a6e22e">setTitle</span>(<span style="color:#e6db74">&#34;updateScore: 7&#34;</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">stayDuration</span>: <span style="color:#66d9ef">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fadeInDuration</span>: <span style="color:#66d9ef">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fadeOutDuration</span>: <span style="color:#66d9ef">0</span>
+</span></span><span style="display:flex;"><span>});</span></span></code></pre></div>
+    
+</div>
+
+            
+        </div>
+    </article>
+
+        </main>
+
+        <footer class="footer">
+    <div class="footer-left">
+        <ul class="social">
+            
+                <li>All Rights Reserved ®.</li>
+            
+
+            
+                <li>Simon</li>
+            
+
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        </ul>
+    </div>
+
+    <div class="footer-right">
+        <ul class="control status clearfix">
+            
+                <li>
+                    
+                        Word Count:
+                        208
+                    
+                </li>
+            
+
+            
+            
+
+            
+                <li>en</li>
+            
+
+            
+                <li>
+                    <a href="https://gohugo.io" class="btn" target="_blank"
+                        >Hugo: 0.124.1</a
+                    >
+                </li>
+            
+
+            
+                <li>
+                    <a
+                        href="https://github.com/JingWangTW/dark-theme-editor"
+                        class="btn"
+                        target="_blank"
+                        >Theme: dark-theme-editor</a
+                    >
+                </li>
+            
+
+            
+                <li>
+                    
+                        Last modified: &nbsp;
+                        <time>
+                            Apr 23 2024 07:06:54
+                        </time>
+                    
+                </li>
+            
+
+            
+                <li title="">
+                    
+                </li>
+            
+        </ul>
+    </div>
+</footer>
+
+    </body>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+        <script
+            type="text/javascript"
+            src="/_theme/js/codeblock_copy.2e8ec6d1c2acd298acca044dd90a3e6c550bfe467768a22d8ce69c30cefdf813e1f2bdf31939c94542b977db46bdc0e844c807779972408d8a58df29657a635b.js"
+            integrity="sha512-Lo7G0cKs0pisygRN2Qo&#43;bFUL/kZ3aKItjOacMM79&#43;BPh8r3zGTnJRUK5d9tGvcDoRMgHd5lyQI2KWN8pZXpjWw=="></script>
+    
+        
+        <script
+            type="text/javascript"
+            src="/_theme/js/dir_toggle.35e8f79b370b43fa56a12e33f2a6498fdd571d6d857796df2ade4bf9af6a2d6b274fcc3846de6aa679a12d2e9cce53330ee1eeec121bc40d0a42d98b2b413b8f.js"
+            integrity="sha512-Nej3mzcLQ/pWoS4z8qZJj91XHW2Fd5bfKt5L&#43;a9qLWsnT8w4Rt5qpnmhLS6czlMzDuHu7BIbxA0KQtmLK0E7jw=="></script>
+    
+        
+        <script
+            type="text/javascript"
+            src="/_theme/js/sidebar.c85fe41e1d2b187f402cf6abbc0273c6c8b0767b0d20dec7ca6134a4dc3e01a4bc8a9bcee30203dea8546be9fdbd73d53e09aa8908f54a44429ca324e81905da.js"
+            integrity="sha512-yF/kHh0rGH9ALParvAJzxsiwdnsNIN7HymE0pNw&#43;AaS8ipvO4wID3qhUa&#43;n9vXPVPgmqiQj1SkRCnKMk6BkF2g=="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+
+
+
+</html>

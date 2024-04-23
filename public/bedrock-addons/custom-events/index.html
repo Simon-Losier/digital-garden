@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=55775&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="generator" content="Hugo 0.124.1">
+
+    
+
+    
+
+    
+        
+            <meta
+                name="description"
+                content="Simon&#39;s Digital Garden" />
+        
+
+        
+            <meta
+                name="keywords"
+                content="minecraft, bedrock, minecraft addons, hugo, gamedev, webdev" />
+        
+
+        
+            <meta name="author" content="Simon" />
+        
+
+    
+
+
+    <title>
+        
+            Make an interactable block with custom components |
+            Simon&#39;s Digital Garden
+        
+    </title>
+
+    
+
+
+    
+    
+
+    
+    
+
+
+    
+    
+
+
+    
+    
+
+
+    
+    
+
+    
+
+
+    
+    
+
+    
+
+    
+
+        
+            
+            <link
+                rel="stylesheet"
+                href="/reset.min_6851612176967065231.3662e40c85350bf0bcf308b7db81c173e4b690b862d3c3cde460de5155550bf055b7ff48cddb1cf5255e55f0355196d8dec1d49434b2457842cc77ebea198f3f.css"
+                integrity="sha512-NmLkDIU1C/C88wi324HBc&#43;S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" />
+        
+            
+            <link
+                rel="stylesheet"
+                href="/_theme/css/01_layout.26ffaaf7a32c233cbe1c7c9093d3b744e9466ea0a11559a8f3350a40468de72856a6fd3fd8f38bc13f66093fbeeee908d56483cac2ac01de75b17f999fd2606a.css"
+                integrity="sha512-Jv&#43;q96MsIzy&#43;HHyQk9O3ROlGbqChFVmo8zUKQEaN5yhWpv0/2POLwT9mCT&#43;&#43;7ukI1WSDysKsAd51sX&#43;Zn9Jgag==" />
+        
+            
+            <link
+                rel="stylesheet"
+                href="/_theme/css/02_style.6e547a963eb4b47b8466738206d9e1d164b1af63a268440672bd5138749f058278dbecc942f26f32c884fba203dc138d3dbdc0d3b559a049feec71464bb56ca1.css"
+                integrity="sha512-blR6lj60tHuEZnOCBtnh0WSxr2OiaEQGcr1ROHSfBYJ42&#43;zJQvJvMsiE&#43;6ID3BONPb3A07VZoEn&#43;7HFGS7VsoQ==" />
+        
+            
+            <link
+                rel="stylesheet"
+                href="/_theme/css/03_home.c12c2a68104bddb5523ceeaafb439534c4574cc4e78ffbab3a8e7d8c2bd3bd4eab28a89e9039fb588153dbf64108c4eafaee3c52d6192050f7ef5ec4ecc7c21f.css"
+                integrity="sha512-wSwqaBBL3bVSPO6q&#43;0OVNMRXTMTnj/urOo59jCvTvU6rKKiekDn7WIFT2/ZBCMTq&#43;u48UtYZIFD3717E7MfCHw==" />
+        
+            
+            <link
+                rel="stylesheet"
+                href="/_theme/css/04_responsive.cd3527afabdc02c3c117d57389f622b57e143ac3ee5dcc150b0e4b6ef262353217a1bf92f365e0f23f3021fd5e97abab71b1f06c2c431e885f46a27f5d9e9730.css"
+                integrity="sha512-zTUnr6vcAsPBF9VzifYitX4UOsPuXcwVCw5LbvJiNTIXob&#43;S82Xg8j8wIf1el6urcbHwbCxDHohfRqJ/XZ6XMA==" />
+        
+            
+            <link
+                rel="stylesheet"
+                href="/_theme/css/05_markdown.b84d310882bf53ceaa3e614e623874bb542bacb17445bb27c2deb29e6dc0525a4d9fa5c49532000df51ca1cb29d2697dcd4ec4ef2493bd86f5d820de17ebae21.css"
+                integrity="sha512-uE0xCIK/U86qPmFOYjh0u1QrrLF0Rbsnwt6ynm3AUlpNn6XElTIADfUcocsp0ml9zU7E7ySTvYb12CDeF&#43;uuIQ==" />
+        
+
+    
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+</head>
+
+
+
+    <body>
+        <header class="header">
+    <div class="header_left">
+        
+    </div>
+
+    <div class="header_middle">
+        
+            Make an interactable block with custom components -
+            Simon&#39;s Digital Garden
+        
+    </div>
+</header>
+
+
+
+        <main>
+            <aside class="sidebar">
+    
+
+
+
+    
+    
+
+    
+    
+
+
+    <ul class="section-tree">
+        
+            
+                <li
+                    
+                        class="dir closed-dir"
+                    >
+                    <span class="dir-text"> Hugo </span>
+
+                    
+
+
+
+    
+    
+
+    
+    
+
+
+    <ul class="section-tree">
+        
+            
+                <li
+                    
+                        class="dir closed-dir"
+                    >
+                    <span class="dir-text"> Dotorg Theme </span>
+
+                    
+
+
+
+    
+    
+
+    
+    
+
+
+    <ul class="section-tree">
+        
+            
+                <li class="file">
+                    <a href="http://localhost:55775/hugo/dotorg/change-theme-colors/" title="./hugo/dotorg/change-theme-colors/">
+                        
+                            Change Dot Org Theme Colors
+                        
+                    </a>
+                </li>
+            
+        
+    </ul>
+
+
+                </li>
+            
+        
+    </ul>
+
+
+                </li>
+            
+        
+            
+                <li
+                    
+                        class="dir opened-dir"
+                    >
+                    <span class="dir-text"> Bedrock Addons </span>
+
+                    
+
+
+
+    
+    
+
+    
+    
+
+
+    <ul class="section-tree">
+        
+            
+                <li class="file">
+                    <a href="http://localhost:55775/bedrock-addons/score_ui/" title="./bedrock-addons/score_ui/">
+                        
+                            Creating a score HUD with JSON UI
+                        
+                    </a>
+                </li>
+            
+        
+            
+                <li class="file">
+                    <a href="http://localhost:55775/bedrock-addons/custom-events/" title="./bedrock-addons/custom-events/">
+                        
+                            Make an interactable block with custom components
+                        
+                    </a>
+                </li>
+            
+        
+    </ul>
+
+
+                </li>
+            
+        
+    </ul>
+
+
+</aside>
+<aside class="exapandable"></aside>
+
+
+            
+    <article class="main">
+        <button
+    class="sidebar-toggle-btn"
+    type="menu"
+    aria-expanded="false"
+    aria-haspopup="true">
+    <i class="bi bi-list"></i>
+</button>
+
+
+
+        <div class="title">
+            <h1 class="title-header">
+                Make an interactable block with custom components
+            </h1>
+
+            <div class="author-date-readtime">
+                
+
+                    
+                        <div class="author" title="Author">
+                            <i class="bi bi-person"></i>
+                            <a
+                                href="/author/simon/"
+                                class="cat-btn">
+                                Simon
+                            </a>
+                        </div>
+                    
+
+                
+
+                
+                    <div class="date" title="Date">
+                        <i class="bi bi-calendar3"></i>
+                        <time
+                            datetime="2024.04.22"
+                            >2024.04.22
+                        </time>
+                    </div>
+                
+
+                
+                    <div
+                        class="readtime"
+                        title="Time to Read">
+                        <i class="bi bi-clock"></i>
+                        1 min to read
+                    </div>
+                
+            </div>
+        </div>
+
+        <div class="article-meta">
+            
+
+            
+
+            
+                <div class="breadcumb">
+                    <i class="bi bi-folder"></i>
+                    
+    
+    
+
+
+
+
+<a href="http://localhost:55775/" class="bread-btn">
+    
+        <i class="bi bi-house-fill"></i>
+    
+
+    
+        Home
+    
+</a>
+
+
+
+
+    /
+
+
+
+<a href="http://localhost:55775/bedrock-addons/" class="bread-btn">
+    
+
+    
+        Bedrock Addons
+    
+</a>
+
+
+
+
+    /
+
+
+
+<a href="http://localhost:55775/bedrock-addons/custom-events/" class="bread-btn">
+    
+
+    
+        
+            Make an interactable block with custom components
+        
+
+    
+</a>
+
+                </div>
+            
+
+            
+        </div>
+
+        
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#requirements">Requirements</a></li>
+    <li><a href="#step-1-register-custom-component">Step 1: Register custom component</a></li>
+    <li><a href="#step-2-bind-component">Step 2: Bind component</a></li>
+    <li><a href="#step-3-add-custom-component-to-block">Step 3: Add custom component to block</a></li>
+  </ul>
+</nav>
+        
+
+
+        <div class="content">
+            
+                <p>NOTE: This guide was made for Minecraft Bedrock Preview 1.21.0.22, this will not work in 1.20</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Minecraft preview 1.21 or higher</li>
+<li>Have a block created</li>
+</ul>
+<h2 id="step-1-register-custom-component">Step 1: Register custom component</h2>
+<p>Custom compoenent registration can only be done in `world.beforeEvents.worldInitialize&rsquo; and will only take into effect in a world restart</p>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="#ZgotmplZ">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#a6e22e">world</span>.<span style="color:#a6e22e">beforeEvents</span>.<span style="color:#a6e22e">worldInitialize</span>.<span style="color:#a6e22e">subscribe</span>((<span style="color:#a6e22e">eventData</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">eventData</span>.<span style="color:#a6e22e">blockTypeRegistry</span>.<span style="color:#a6e22e">registerCustomComponent</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;example:customEvent&#39;</span>, <span style="color:#75715e">// Name of custom event, this will go in the block JSON later
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">onCustomEvent</span>(); <span style="color:#75715e">// Custom event binding object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};</span></span></code></pre></div>
+    
+</div>
+<h2 id="step-2-bind-component">Step 2: Bind component</h2>
+<p>The next step is to bind the component to the event, there is a list of events <a href="https://learn.microsoft.com/en-us/minecraft/creator/documents/customcomponents?view=minecraft-bedrock-stable#roadmap">here</a></p>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="export%20class%20onCustomEvent%20implements%20BlockCustomComponent%20%7b%0a%20%20%20%20constructor%28%29%20%7b%0a%20%20%20%20%20%20%20%20this.onPlayerInteract%20=%20this.onPlayerInteract.bind%28this%29;%20//%20Event%20type%0a%20%20%20%20%7d%0a%20%20%20%20onPlayerInteract%28eventData:%20BlockComponentPlayerInteractEvent%29%20%7b%0a%20%20%20%20%20%20%20%20world.sendMessage%28%22Block%20interacted%22%29;%20%20//%20Event%20logic%20here%0a%20%20%20%20%7d%0a%7d">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">onCustomEvent</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">BlockCustomComponent</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constructor</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">onPlayerInteract</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">onPlayerInteract</span>.<span style="color:#a6e22e">bind</span>(<span style="color:#66d9ef">this</span>); <span style="color:#75715e">// Event type
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">onPlayerInteract</span>(<span style="color:#a6e22e">eventData</span>: <span style="color:#66d9ef">BlockComponentPlayerInteractEvent</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">world</span>.<span style="color:#a6e22e">sendMessage</span>(<span style="color:#e6db74">&#34;Block interacted&#34;</span>);  <span style="color:#75715e">// Event logic here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+    
+</div>
+<h2 id="step-3-add-custom-component-to-block">Step 3: Add custom component to block</h2>
+<p>Once the event created, to add the custom component to the block, add to the block components the <code>minecraft:custom_component</code>feild with an array of custom component strings.</p>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="#ZgotmplZ">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;minecraft:block&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;components&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;minecraft:custom_components&#34;</span>: [<span style="color:#e6db74">&#34;example:customEvent&#34;</span>]
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+    
+</div>
+
+            
+        </div>
+    </article>
+
+        </main>
+
+        <footer class="footer">
+    <div class="footer-left">
+        <ul class="social">
+            
+                <li>All Rights Reserved ®.</li>
+            
+
+            
+                <li>Simon</li>
+            
+
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        </ul>
+    </div>
+
+    <div class="footer-right">
+        <ul class="control status clearfix">
+            
+                <li>
+                    
+                        Word Count:
+                        167
+                    
+                </li>
+            
+
+            
+            
+
+            
+                <li>en</li>
+            
+
+            
+                <li>
+                    <a href="https://gohugo.io" class="btn" target="_blank"
+                        >Hugo: 0.124.1</a
+                    >
+                </li>
+            
+
+            
+                <li>
+                    <a
+                        href="https://github.com/JingWangTW/dark-theme-editor"
+                        class="btn"
+                        target="_blank"
+                        >Theme: dark-theme-editor</a
+                    >
+                </li>
+            
+
+            
+                <li>
+                    
+                        Last modified: &nbsp;
+                        <time>
+                            Apr 22 2024 22:43:21
+                        </time>
+                    
+                </li>
+            
+
+            
+                <li title="">
+                    
+                </li>
+            
+        </ul>
+    </div>
+</footer>
+
+    </body>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+        <script
+            type="text/javascript"
+            src="/_theme/js/codeblock_copy.2e8ec6d1c2acd298acca044dd90a3e6c550bfe467768a22d8ce69c30cefdf813e1f2bdf31939c94542b977db46bdc0e844c807779972408d8a58df29657a635b.js"
+            integrity="sha512-Lo7G0cKs0pisygRN2Qo&#43;bFUL/kZ3aKItjOacMM79&#43;BPh8r3zGTnJRUK5d9tGvcDoRMgHd5lyQI2KWN8pZXpjWw=="></script>
+    
+        
+        <script
+            type="text/javascript"
+            src="/_theme/js/dir_toggle.35e8f79b370b43fa56a12e33f2a6498fdd571d6d857796df2ade4bf9af6a2d6b274fcc3846de6aa679a12d2e9cce53330ee1eeec121bc40d0a42d98b2b413b8f.js"
+            integrity="sha512-Nej3mzcLQ/pWoS4z8qZJj91XHW2Fd5bfKt5L&#43;a9qLWsnT8w4Rt5qpnmhLS6czlMzDuHu7BIbxA0KQtmLK0E7jw=="></script>
+    
+        
+        <script
+            type="text/javascript"
+            src="/_theme/js/sidebar.c85fe41e1d2b187f402cf6abbc0273c6c8b0767b0d20dec7ca6134a4dc3e01a4bc8a9bcee30203dea8546be9fdbd73d53e09aa8908f54a44429ca324e81905da.js"
+            integrity="sha512-yF/kHh0rGH9ALParvAJzxsiwdnsNIN7HymE0pNw&#43;AaS8ipvO4wID3qhUa&#43;n9vXPVPgmqiQj1SkRCnKMk6BkF2g=="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+
+
+
+</html>

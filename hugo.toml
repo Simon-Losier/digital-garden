@@ -1,0 +1,17 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = "Simon's Digital Garden"
+theme = 'dark-theme-editor'
+
+[params.header]
+	title="Simon's Digital Garden"
+	
+[params.globalFrontmatter]
+	author="Simon"
+	description = "Simon's Digital Garden"
+	keywords= "minecraft, bedrock, minecraft addons, hugo, gamedev, webdev"
+	
+
+[params.homePage]
+	siteLongDescription = "Welcome to my digital garden, a digital garden is somewhere between a blog and a wiki. I mostly post guides on problems I get stuck on or things that would be useful to know in the future and don't want to forget."
+	siteLongDecriptionTitle = "About"

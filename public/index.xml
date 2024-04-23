@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Simon&#39;s Digital Garden</title>
+    <link>http://localhost:55775/</link>
+    <description>Recent content on Simon&#39;s Digital Garden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 23 Apr 2024 07:36:44 -0300</lastBuildDate>
+    <atom:link href="http://localhost:55775/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Change Dot Org Theme Colors</title>
+      <link>http://localhost:55775/hugo/dotorg/change-theme-colors/</link>
+      <pubDate>Tue, 23 Apr 2024 07:36:44 -0300</pubDate>
+      <guid>http://localhost:55775/hugo/dotorg/change-theme-colors/</guid>
+      <description>To change the color of the theme you go to themes\dot-org-hugo-theme\assets\scss\_variables.scss, all the scss variable are availble to change there</description>
+    </item>
+    <item>
+      <title>Creating a score HUD with JSON UI</title>
+      <link>http://localhost:55775/bedrock-addons/score_ui/</link>
+      <pubDate>Tue, 23 Apr 2024 07:06:54 -0300</pubDate>
+      <guid>http://localhost:55775/bedrock-addons/score_ui/</guid>
+      <description>Step 1: Create Score UI Element Create a hud object in the RP/ui/hud_screen.json file&#xA;{ &amp;#34;namespace&amp;#34;: &amp;#34;hud&amp;#34;, &amp;#34;hud_text&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;label&amp;#34;, &amp;#34;text&amp;#34;: &amp;#34;#text&amp;#34;, &amp;#34;anchor_from&amp;#34;: &amp;#34;top_left&amp;#34;, &amp;#34;anchor_to&amp;#34;: &amp;#34;top_left&amp;#34;, &amp;#34;offset&amp;#34;: [ 4, 4 ], &amp;#34;$update_string&amp;#34;: &amp;#34;update&amp;#34;, &amp;#34;controls&amp;#34;: [ { &amp;#34;data_control&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;panel&amp;#34;, &amp;#34;size&amp;#34;: [ 0, 0 ], &amp;#34;bindings&amp;#34;: [ { &amp;#34;binding_name&amp;#34;: &amp;#34;#hud_title_text_string&amp;#34; // reads in the current title string }, { &amp;#34;binding_name&amp;#34;: &amp;#34;#hud_title_text_string&amp;#34;, &amp;#34;binding_name_override&amp;#34;: &amp;#34;#preserved_text&amp;#34;, // updates #preserved_text when visibility of this element changes &amp;#34;binding_condition&amp;#34;: &amp;#34;visibility_changed&amp;#34; }, // element becomes visible then immediately turns invisible when a title containing the update string is passed { &amp;#34;binding_type&amp;#34;: &amp;#34;view&amp;#34;, &amp;#34;source_property_name&amp;#34;: &amp;#34;(not (#hud_title_text_string = #preserved_text) and not ((#hud_title_text_string - $update_string) = #hud_title_text_string))&amp;#34;, &amp;#34;target_property_name&amp;#34;: &amp;#34;#visible&amp;#34; } ] } } ], &amp;#34;bindings&amp;#34;: [ { &amp;#34;binding_type&amp;#34;: &amp;#34;view&amp;#34;, &amp;#34;source_control_name&amp;#34;: &amp;#34;data_control&amp;#34;, // reads bindings from the &amp;#34;data_control&amp;#34; child element &amp;#34;source_property_name&amp;#34;: &amp;#34;(#preserved_text - $update_string)&amp;#34;, // remove string update text from the text to be displayed &amp;#34;target_property_name&amp;#34;: &amp;#34;#text&amp;#34; } ] }, &amp;#34;root_panel&amp;#34;: { &amp;#34;modifications&amp;#34;: [ { &amp;#34;array_name&amp;#34;: &amp;#34;controls&amp;#34;, &amp;#34;operation&amp;#34;: &amp;#34;insert_front&amp;#34;, &amp;#34;value&amp;#34;: [ { &amp;#34;hud_text@hud.</description>
+    </item>
+    <item>
+      <title>Make an interactable block with custom components</title>
+      <link>http://localhost:55775/bedrock-addons/custom-events/</link>
+      <pubDate>Mon, 22 Apr 2024 22:43:21 -0300</pubDate>
+      <guid>http://localhost:55775/bedrock-addons/custom-events/</guid>
+      <description>NOTE: This guide was made for Minecraft Bedrock Preview 1.21.0.22, this will not work in 1.20&#xA;Requirements Minecraft preview 1.21 or higher Have a block created Step 1: Register custom component Custom compoenent registration can only be done in `world.beforeEvents.worldInitialize&amp;rsquo; and will only take into effect in a world restart&#xA;world.beforeEvents.worldInitialize.subscribe((eventData) =&amp;gt; { eventData.blockTypeRegistry.registerCustomComponent( &amp;#39;example:customEvent&amp;#39;, // Name of custom event, this will go in the block JSON later new onCustomEvent(); // Custom event binding object };&#xD;Step 2: Bind component The next step is to bind the component to the event, there is a list of events here</description>
+    </item>
+  </channel>
+</rss>
